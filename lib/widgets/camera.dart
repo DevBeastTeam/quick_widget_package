@@ -4,8 +4,10 @@ import 'package:flutter/services.dart';
 import 'dart:io';
 import 'dart:async';
 import 'package:path_provider/path_provider.dart';
-import 'package:path/path.dart' as path;
+// ignore: depend_on_referenced_packages
+import 'package:path/path.dart' as paths;
 import 'package:image_picker/image_picker.dart';
+import 'package:torch_plus/torch_plus.dart';
 
 /// QuickCamera is the Main Application.
 class QuickCamera extends StatefulWidget {
@@ -168,7 +170,7 @@ class _QuickCameraState extends State<QuickCamera>
     final directory = await getApplicationDocumentsDirectory();
     final timestamp = DateTime.now().millisecondsSinceEpoch;
     final fileName = 'camera_$timestamp.$extension';
-    return path.join(directory.path, fileName);
+    return paths.join(directory.path, fileName);
   }
 
   Future<void> _takePicture() async {
@@ -562,9 +564,15 @@ class _QuickCameraState extends State<QuickCamera>
             // Flash toggle
             _buildControlButton(
               icon: Icons.flash_auto,
-              onPressed: () {
+              onPressed: () async {
+                if (await TorchPlus.isTorched()) {
+                  await TorchPlus.turnOff();
+                } else {
+                  await TorchPlus.turnOn();
+                }
+                // await TorchPlus.toggle();
                 HapticFeedback.lightImpact();
-                _showSnackBar('Flash control coming soon!');
+                // _showSnackBar('Flash control coming soon!');
               },
               backgroundColor: Colors.black54,
               size: 40,
@@ -631,7 +639,7 @@ class _QuickCameraState extends State<QuickCamera>
                     itemCount: _capturedFiles.length,
                     itemBuilder: (context, index) {
                       final file = _capturedFiles[index];
-                      final fileName = path.basename(file);
+                      final fileName = paths.basename(file);
                       final isVideo = fileName.endsWith('.mp4');
 
                       return Card(
@@ -800,7 +808,7 @@ class _QuickCameraState extends State<QuickCamera>
 
     // Get camera preview size for full screen
     final size = MediaQuery.of(context).size;
-    final deviceRatio = size.width / size.height;
+    // final deviceRatio = size.width / size.height;
 
     return Stack(
       children: [

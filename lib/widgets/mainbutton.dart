@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'dotloader.dart'; // agar DotLoader aapne alag banaya hai to import rakhein
+// import 'dotloader.dart'; // agar DotLoader aapne alag banaya hai to import rakhein
 
 class QuickButton extends StatelessWidget {
   final double width;
