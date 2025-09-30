@@ -1,6 +1,6 @@
 // import 'package:flutter_test/flutter_test.dart';
 
-// import 'package:quicktoast/quicktoast.dart';
+// import 'package:quick_widgets/quick_widgets.dart';
 
 // void main() {
 //   test('adds one to input values', () {

@@ -10,7 +10,7 @@ class Quick {
   /// Show Toast message
   static Future<void> toast({
     required BuildContext context,
-    String message = "Hello from QuickToast 🚀",
+    String message = "Hello from quick_widgets 🚀",
     Color backgroundColor = Colors.black87,
     int durationInSeconds = 2,
     ToastType toastType = ToastType.flat,
@@ -64,7 +64,7 @@ class Quick {
         ),
       );
     } catch (e) {
-      debugPrint("❌ QuickToast Error: $e");
+      debugPrint("❌ quick_widgets Error: $e");
     }
   }
 }

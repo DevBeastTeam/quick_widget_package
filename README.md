@@ -6,7 +6,7 @@
 
 ## ✨ Features
 
-- **QuickToast** → Show simple, customizable toast/snackbar messages  
+- **quick_widgets** → Show simple, customizable toast/snackbar messages  
 - **DotLoader** → Animated 3-dot bouncing loader  
 - **CameraApp2 (QuickCamera)** → Full camera widget with photo & video capture  
 - **QuickButton** → Stylish button with customizable styles and loading state  
@@ -66,12 +66,12 @@ dependencies:
               onPressed: () {
                 Quick.toast(
                   context: context,
-                  message: "Hello! This is QuickToast 😍",
+                  message: "Hello! This is quick_widgets 😍",
                   backgroundColor: Colors.green,
                   durationInSeconds: 2,
                 );
               },
-              child: const Text("Show QuickToast"),
+              child: const Text("Show quick_widgets"),
             ),
           ),
 

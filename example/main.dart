@@ -1,33 +1,33 @@
 import 'package:flutter/material.dart';
-import 'package:quicktoast/quicktoast.dart';
-import 'package:quicktoast/widgets/DotLoader.dart';
-import 'package:quicktoast/widgets/camera.dart';
-import 'package:quicktoast/widgets/mainbutton.dart';
-import 'package:quicktoast/widgets/tiktok.dart';
+import 'package:quick_widgets/quicktoast.dart';
+import 'package:quick_widgets/widgets/DotLoader.dart';
+import 'package:quick_widgets/widgets/camera.dart';
+import 'package:quick_widgets/widgets/mainbutton.dart';
+import 'package:quick_widgets/widgets/tiktok.dart';
 
 void main() {
   runApp(
     const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: QuickToastDemoPage(), // 👈 yahan () lagana zaroori hai
+      home: quick_widgetsDemoPage(), // 👈 yahan () lagana zaroori hai
     ),
   );
 }
 
 // apna package import karo
 
-class QuickToastDemoPage extends StatefulWidget {
-  const QuickToastDemoPage({super.key});
+class quick_widgetsDemoPage extends StatefulWidget {
+  const quick_widgetsDemoPage({super.key});
 
   @override
-  State<QuickToastDemoPage> createState() => _QuickToastDemoPageState();
+  State<quick_widgetsDemoPage> createState() => _quick_widgetsDemoPageState();
 }
 
-class _QuickToastDemoPageState extends State<QuickToastDemoPage> {
+class _quick_widgetsDemoPageState extends State<quick_widgetsDemoPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("QuickToast Example 🚀")),
+      appBar: AppBar(title: const Text("quick_widgets Example 🚀")),
       body: Column(
         children: [
           // 1. tiktok loader
@@ -71,12 +71,12 @@ class _QuickToastDemoPageState extends State<QuickToastDemoPage> {
               onPressed: () {
                 Quick.toast(
                   context: context,
-                  message: "Hello! This is QuickToast 😍",
+                  message: "Hello! This is quick_widgets 😍",
                   backgroundColor: Colors.green,
                   durationInSeconds: 2,
                 );
               },
-              child: const Text("Show QuickToast"),
+              child: const Text("Show quick_widgets"),
             ),
           ),
 
