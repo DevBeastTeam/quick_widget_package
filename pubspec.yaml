@@ -1,7 +1,10 @@
 name: quicktoast
-description: "A simple and customizable toast/snackbar package for Flutter 🚀"
+description: A simple and customizable toast/snackbar package for Flutter 🚀
 version: 0.0.1
-homepage: https://github.com/YOUR_GITHUB/quicktoast
+homepage: https://github.com/DevBeastTeam/quick_widget_package
+repository: https://github.com/DevBeastTeam/quick_widget_package
+issue_tracker: https://github.com/DevBeastTeam/quick_widget_package/issues
+documentation: https://github.com/DevBeastTeam/quick_widget_package#readme
 
 environment:
   sdk: ">=2.17.0 <4.0.0"
@@ -15,6 +18,3 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^3.0.0
-
-flutter:
-  # assets aur fonts abhi zaroori nahi, agar chaho to baad me add kar sakte ho
