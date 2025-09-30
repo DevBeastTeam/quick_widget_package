@@ -1,5 +1,5 @@
 name: quicktoast
-description: A simple and customizable toast/snackbar package for Flutter 🚀
+description: Can called modiefied widgets like , loaders, toast, quick button, camera widgets
 version: 0.0.1
 homepage: https://github.com/DevBeastTeam/quick_widget_package
 repository: https://github.com/DevBeastTeam/quick_widget_package
@@ -13,6 +13,9 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  camera: ^0.11.2
+  path_provider: ^2.1.5
+  image_picker: ^1.2.0
 
 dev_dependencies:
   flutter_test:

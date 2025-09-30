@@ -1,39 +1,83 @@
-<!--
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
+# Quick Widgets
 
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/tools/pub/writing-package-pages).
+- Can called modiefied widgets like , loaders, toast, quick button, camera widgets, 
+- With just a single import, you get access to multiple utilities like loaders, toasts, camera integration, and more.
 
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/to/develop-packages).
--->
 
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+## ✨ Features
 
-## Features
+- **QuickToast** → Show simple, customizable toast/snackbar messages  
+- **DotLoader** → Animated 3-dot bouncing loader  
+- **CameraApp2 (QuickCamera)** → Full camera widget with photo & video capture  
+- **QuickButton** → Stylish button with customizable styles and loading state  
+- **TikTokProgressLoader** → Smooth animated progress bar inspired by TikTok  
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+---
 
-## Getting started
+## Getting Started
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+Add this package in your `pubspec.yaml`:
 
-## Usage
-
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
-
-```dart
-const like = 'sample';
+```yaml
+dependencies:
+  quick_widgets: ^0.0.1
 ```
 
-## Additional information
+## Example Widgets
 
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.
+```dart
+          // 1. tiktok loader
+          const QuickTikTokLoader(),
+
+          // 2. dot loader
+          const QuickDotLoader(),
+
+          // 3. open camera image capture, video recorder
+          Center(
+            child: ElevatedButton(
+              onPressed: () async {
+                var fileType = "";
+                var filePath = "";
+                // Open QuickCamera as a full-screen dialog instead of navigation
+                await showDialog(
+                  context: context,
+                  builder: (context) => QuickCamera(
+                    autoBackOnCapture: true, // will close automatically
+                    onCaptured: (capturedType, file) async {
+                      fileType = capturedType;
+                      filePath = file.path;
+                    },
+                  ),
+                );
+                if (filePath.isEmpty) {
+                  print('not captured');
+                } else {
+                  print("fileType:$fileType");
+                  print("filePath:$filePath");
+                }
+              },
+              child: const Text("Open Camera"),
+            ),
+          ),
+
+          // 4. show toast
+          Center(
+            child: ElevatedButton(
+              onPressed: () {
+                Quick.toast(
+                  context: context,
+                  message: "Hello! This is QuickToast 😍",
+                  backgroundColor: Colors.green,
+                  durationInSeconds: 2,
+                );
+              },
+              child: const Text("Show QuickToast"),
+            ),
+          ),
+
+          // 5. quick button
+            QuickButton(
+                onPressed: () {},
+                text: "Quick Button",
+            ),
+```

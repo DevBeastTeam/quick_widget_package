@@ -1,16 +1,30 @@
 import 'package:flutter/material.dart';
 
-class QuickToast {
-  // Base config (agar future me aur customization karna ho)
-  static const String _defaultMessage = "Hello from QuickToast 🚀";
+enum ToastType {
+  flat,
+  corner,
+  rounded,
+}
 
+class Quick {
   /// Show Toast message
-  static Future<void> show({
+  static Future<void> toast({
     required BuildContext context,
-    String? message,
+    String message = "Hello from QuickToast 🚀",
     Color backgroundColor = Colors.black87,
-    Color textColor = Colors.white,
     int durationInSeconds = 2,
+    ToastType toastType = ToastType.flat,
+    double radius = 20,
+    TextStyle textStyle = const TextStyle(color: Colors.white),
+    SnackBarBehavior behavior = SnackBarBehavior.floating,
+    bool showCloseIcon = false,
+    EdgeInsetsGeometry? margin,
+    EdgeInsetsGeometry? padding,
+    double? width,
+    double elevation = 6.0,
+    String closeBtnLabel = "Hide",
+    Function? onCloseBtnTap,
+    BorderSide? border,
   }) async {
     try {
       // Hide current snackbars (clean UI)
@@ -19,13 +33,34 @@ class QuickToast {
       // Show new toast (Snackbar based)
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
+          margin: margin,
+          padding: padding,
+          width: width,
+          elevation: elevation,
+          showCloseIcon: showCloseIcon,
+          action: onCloseBtnTap == null
+              ? null
+              : SnackBarAction(
+                  label: closeBtnLabel,
+                  onPressed: () {
+                    ScaffoldMessenger.of(context).hideCurrentSnackBar();
+                  }),
+          shape: toastType == ToastType.rounded
+              ? RoundedRectangleBorder(
+                  side: border!,
+                  borderRadius: BorderRadiusGeometry.circular(radius))
+              : toastType == ToastType.rounded
+                  ? BeveledRectangleBorder(
+                      side: border!,
+                      borderRadius: BorderRadiusGeometry.circular(radius))
+                  : null,
           content: Text(
-            message ?? _defaultMessage,
-            style: TextStyle(color: textColor),
+            message,
+            style: textStyle,
           ),
           backgroundColor: backgroundColor,
           duration: Duration(seconds: durationInSeconds),
-          behavior: SnackBarBehavior.floating,
+          behavior: behavior,
         ),
       );
     } catch (e) {
