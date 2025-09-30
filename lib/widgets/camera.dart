@@ -5,7 +5,7 @@ import 'dart:io';
 import 'dart:async';
 import 'package:path_provider/path_provider.dart';
 // ignore: depend_on_referenced_packages
-import 'package:path/path.dart' as paths;
+import 'package:path/path.dart' as path;
 import 'package:image_picker/image_picker.dart';
 import 'package:torch_plus/torch_plus.dart';
 
@@ -170,7 +170,7 @@ class _QuickCameraState extends State<QuickCamera>
     final directory = await getApplicationDocumentsDirectory();
     final timestamp = DateTime.now().millisecondsSinceEpoch;
     final fileName = 'camera_$timestamp.$extension';
-    return paths.join(directory.path, fileName);
+    return path.join(directory.path, fileName);
   }
 
   Future<void> _takePicture() async {
@@ -639,7 +639,7 @@ class _QuickCameraState extends State<QuickCamera>
                     itemCount: _capturedFiles.length,
                     itemBuilder: (context, index) {
                       final file = _capturedFiles[index];
-                      final fileName = paths.basename(file);
+                      final fileName = path.basename(file);
                       final isVideo = fileName.endsWith('.mp4');
 
                       return Card(
